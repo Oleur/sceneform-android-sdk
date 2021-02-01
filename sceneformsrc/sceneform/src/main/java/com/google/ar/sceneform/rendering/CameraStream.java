@@ -1,6 +1,6 @@
 package com.google.ar.sceneform.rendering;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import com.google.android.filament.EntityManager;
 import com.google.android.filament.IndexBuffer;
@@ -294,12 +294,12 @@ public class CameraStream {
       AndroidPreconditions.checkUiThread();
 
       IEngine engine = EngineInstance.getEngine();
-      if (engine == null && !engine.isValid()) {
+      if (engine == null || !engine.isValid()) {
         return;
       }
 
       if (cameraStreamRenderable != UNINITIALIZED_FILAMENT_RENDERABLE) {
-        scene.remove(cameraStreamRenderable);
+        scene.removeEntity(cameraStreamRenderable);
       }
 
       engine.destroyIndexBuffer(cameraIndexBuffer);

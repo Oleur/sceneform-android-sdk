@@ -16,7 +16,7 @@ package com.google.ar.sceneform.ux;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
@@ -25,7 +25,7 @@ import android.widget.FrameLayout;
 /** This view contains the hand motion instructions with animation. */
 
 public class HandMotionView extends AppCompatImageView {
-  private HandMotionAnimation animation;
+
   private static final long ANIMATION_SPEED_MS = 2500;
 
   public HandMotionView(Context context) {
@@ -43,9 +43,9 @@ public class HandMotionView extends AppCompatImageView {
     clearAnimation();
 
     FrameLayout container =
-        (FrameLayout) ((Activity) getContext()).findViewById(R.id.sceneform_hand_layout);
+            ((Activity) getContext()).findViewById(R.id.sceneform_hand_layout);
 
-    animation = new HandMotionAnimation(container, this);
+    HandMotionAnimation animation = new HandMotionAnimation(container, this);
     animation.setRepeatCount(Animation.INFINITE);
     animation.setDuration(ANIMATION_SPEED_MS);
     animation.setStartOffset(1000);
